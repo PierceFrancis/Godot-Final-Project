@@ -1,20 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://vwdj0yaf5ar2"]
+[gd_scene load_steps=3 format=3 uid="uid://vwdj0yaf5ar2"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://6gf0flf0t48u" path="res://Scenes/static_body_2d.tscn" id="2_bo1nx"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -705.0
-offset_top = -408.0
-offset_right = 708.0
-offset_bottom = 440.0
+offset_left = -1572.0
+offset_top = -945.0
+offset_right = 1606.0
+offset_bottom = 984.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_right = 221.0
-offset_bottom = 85.0
+[node name="StaticBody2D" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(268, 36)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(-420, -342)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(525, -354)
