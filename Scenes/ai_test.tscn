@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhlnf78r161w3"]
+[gd_scene load_steps=6 format=3 uid="uid://dhlnf78r161w3"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_svsoo"]
 [ext_resource type="Script" uid="uid://bqm0ah23tvead" path="res://Scenes/Scripts/enemy.gd" id="2_u4xhv"]
@@ -6,6 +6,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_acnta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svsoo"]
 
 [node name="AiTest" type="Node2D"]
 
@@ -22,7 +24,7 @@ color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 scale = Vector2(0.99746364, 1)
 
 [node name="enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(83, 49)
+position = Vector2(80.99999, 47.000004)
 scale = Vector2(1.2216754, 0.96725625)
 script = ExtResource("2_u4xhv")
 player = NodePath("../Player")
@@ -33,3 +35,13 @@ mesh = SubResource("BoxMesh_acnta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 shape = SubResource("RectangleShape2D_bxwl7")
+
+[node name="Area2D" type="Area2D" parent="enemy"]
+position = Vector2(2.4303285e-06, -2.3841858e-07)
+scale = Vector2(0.818548, 1.0338522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
+scale = Vector2(8.860776, -3.7720153)
+shape = SubResource("CircleShape2D_svsoo")
+
+[connection signal="body_entered" from="enemy/Area2D" to="enemy" method="_on_area_2d_body_entered"]
