@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_bxwl7")
 
 [node name="Area2D" type="Area2D" parent="enemy"]
 position = Vector2(2.4303285e-06, -2.3841858e-07)
-scale = Vector2(0.8139442, 1.0110737)
+scale = Vector2(1.497373, 4.181692)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
 scale = Vector2(8.860776, -3.7720153)

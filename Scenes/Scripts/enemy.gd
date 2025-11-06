@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+const SPEED = 250.0
 @export var player : Node2D
 #Hostile or idle Bool
 var Hostile : bool = false
@@ -21,4 +21,6 @@ func charge():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	Hostile  = true
+	if body.name == "Player":
+		Hostile  = true
+	
