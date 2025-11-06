@@ -21,11 +21,13 @@ offset_bottom = 440.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_svsoo")]
-scale = Vector2(0.99746364, 1)
+scale = Vector2(0.48112985, 0.25459605)
 
 [node name="enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(80.99999, 47.000004)
+position = Vector2(156, 166)
 scale = Vector2(1.2216754, 0.96725625)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_u4xhv")
 player = NodePath("../Player")
 
@@ -38,7 +40,7 @@ shape = SubResource("RectangleShape2D_bxwl7")
 
 [node name="Area2D" type="Area2D" parent="enemy"]
 position = Vector2(2.4303285e-06, -2.3841858e-07)
-scale = Vector2(0.818548, 1.0338522)
+scale = Vector2(0.8139442, 1.0110737)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
 scale = Vector2(8.860776, -3.7720153)
