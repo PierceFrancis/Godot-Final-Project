@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhlnf78r161w3"]
+
+[ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_svsoo"]
+[ext_resource type="Script" uid="uid://bqm0ah23tvead" path="res://Scenes/Scripts/enemy.gd" id="2_u4xhv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_acnta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
+
+[node name="AiTest" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -705.0
+offset_top = -408.0
+offset_right = 708.0
+offset_bottom = 440.0
+color = Color(0.14139813, 0.31891572, 0.26833078, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_svsoo")]
+scale = Vector2(0.99746364, 1)
+
+[node name="enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(83, 49)
+scale = Vector2(1.2216754, 0.96725625)
+script = ExtResource("2_u4xhv")
+player = NodePath("../Player")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="enemy"]
+scale = Vector2(23.045698, 22.909733)
+mesh = SubResource("BoxMesh_acnta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+shape = SubResource("RectangleShape2D_bxwl7")
