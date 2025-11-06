@@ -14,3 +14,7 @@ offset_bottom = 440.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 221.0
+offset_bottom = 85.0
