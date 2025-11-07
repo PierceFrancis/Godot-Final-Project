@@ -1,16 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhlnf78r161w3"]
+[gd_scene load_steps=3 format=3 uid="uid://dhlnf78r161w3"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_svsoo"]
-[ext_resource type="Script" uid="uid://bqm0ah23tvead" path="res://Scenes/Scripts/enemy.gd" id="2_u4xhv"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_acnta"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_svsoo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_svsoo"]
-size = Vector2(27.012093, 29.981659)
+[ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="2_svsoo"]
 
 [node name="AiTest" type="Node2D"]
 
@@ -26,34 +17,6 @@ color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 [node name="Player" parent="." instance=ExtResource("1_svsoo")]
 scale = Vector2(0.48112985, 0.25459605)
 
-[node name="enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_svsoo")]
 position = Vector2(156, 166)
-scale = Vector2(1.2216754, 0.96725625)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("2_u4xhv")
 player = NodePath("../Player")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="enemy"]
-scale = Vector2(23.045698, 22.909733)
-mesh = SubResource("BoxMesh_acnta")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
-shape = SubResource("RectangleShape2D_bxwl7")
-
-[node name="DetectionShape" type="Area2D" parent="enemy"]
-position = Vector2(2.4303285e-06, -2.3841858e-07)
-scale = Vector2(1.497373, 4.181692)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/DetectionShape"]
-scale = Vector2(8.860776, -3.7720153)
-shape = SubResource("CircleShape2D_svsoo")
-
-[node name="Killbox" type="Area2D" parent="enemy"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Killbox"]
-position = Vector2(0.40927124, -1.5507355)
-shape = SubResource("RectangleShape2D_svsoo")
-debug_color = Color(0.99918705, 0, 0.13425627, 0.41960785)
-
-[connection signal="body_entered" from="enemy/DetectionShape" to="enemy" method="_on_area_2d_body_entered"]
