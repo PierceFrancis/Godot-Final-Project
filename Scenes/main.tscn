@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://vwdj0yaf5ar2"]
+[gd_scene load_steps=5 format=3 uid="uid://vwdj0yaf5ar2"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" path="res://Scenes/static_body_2d.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://6gf0flf0t48u" path="res://Scenes/static_body_2d.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://n2vbxqtdmtcw" path="res://Scenes/item_pickup.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D"]
 
@@ -23,3 +25,12 @@ position = Vector2(-420, -342)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(525, -354)
+
+[node name="item_pickup" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(-251, -2)
+
+[node name="item_pickup2" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(-69, -200)
+
+[node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(309, -135)

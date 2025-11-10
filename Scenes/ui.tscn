@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4vjb0pt4vr3g"]
+
+[ext_resource type="Script" uid="uid://bi6vj87w6cyad" path="res://Scenes/ui.gd" id="1_jxero"]
+
+[node name="UI" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -492.0
+offset_top = -246.0
+offset_right = 544.0
+offset_bottom = 265.0
+script = ExtResource("1_jxero")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 525.0
+offset_bottom = 69.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Weapon: "
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_right = 163.0
+offset_bottom = 69.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Items: "
