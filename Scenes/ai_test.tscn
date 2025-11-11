@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhlnf78r161w3"]
+[gd_scene load_steps=6 format=3 uid="uid://dhlnf78r161w3"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_svsoo"]
 [ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="2_svsoo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_svsoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4xhv"]
+size = Vector2(323, 20)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_acnta"]
+vertices = PackedVector2Array(-561.97656, -311.9297, 552.2422, -305.04688, -198.03125, -278.6875, -237.99219, -280.59375, 177.36719, -199.39844, 106.78125, -199, 567.7422, 313.03125, 358.75, 107.296875, 287.64063, 12.2421875, 177.21875, -80.6875, 231.42969, 54.9375, -214.0625, 61.578125, 106.61719, -80.28906, -561.0078, 316.96094, -254.00781, 59.679688, 302.53906, 150)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(4, 1, 6, 7, 8), PackedInt32Array(9, 4, 8, 10), PackedInt32Array(11, 2, 5, 12), PackedInt32Array(13, 0, 3, 14), PackedInt32Array(6, 13, 14, 11, 15), PackedInt32Array(15, 7, 6), PackedInt32Array(15, 11, 12, 10), PackedInt32Array(10, 12, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-572, -322, 562, -315, 578, 323, -571, 327)])
+agent_radius = 171.61
 
 [node name="AiTest" type="Node2D"]
 
@@ -18,5 +29,62 @@ color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 scale = Vector2(0.48112985, 0.25459605)
 
 [node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_svsoo")]
-position = Vector2(156, 166)
+position = Vector2(157, 165)
 player = NodePath("../Player")
+
+[node name="obstacle" type="StaticBody2D" parent="."]
+position = Vector2(-36.999985, 117.00001)
+rotation = -0.21103223
+scale = Vector2(0.99272645, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="obstacle"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_svsoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_u4xhv")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_acnta")
+
+[node name="obstacle4" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(-226.00002, -110.00002)
+rotation = 1.6178564
+scale = Vector2(0.99272645, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle4"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_svsoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle4"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_u4xhv")
+
+[node name="obstacle2" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(295.00003, 80.99999)
+rotation = 0.92849964
+scale = Vector2(0.3056079, 2.529696)
+skew = -0.0070174932
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle2"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_svsoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle2"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_u4xhv")
+
+[node name="obstacle3" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(142.00002, -139.99997)
+rotation = 1.57215
+scale = Vector2(0.3056079, 2.529696)
+skew = -0.0070174932
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle3"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_svsoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle3"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_u4xhv")

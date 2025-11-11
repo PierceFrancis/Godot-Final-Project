@@ -33,10 +33,16 @@ scale = Vector2(8.860776, -3.7720153)
 shape = SubResource("CircleShape2D_svsoo")
 
 [node name="Killbox" type="Area2D" parent="."]
+position = Vector2(13.096768, 0)
+scale = Vector2(2.0689144, 1.4635081)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
 position = Vector2(0.40927124, -1.5507355)
 shape = SubResource("RectangleShape2D_svsoo")
 debug_color = Color(0.99918705, 0, 0.13425627, 0.41960785)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
 [connection signal="body_entered" from="DetectionShape" to="." method="_on_area_2d_body_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
