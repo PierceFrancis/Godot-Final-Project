@@ -15,11 +15,14 @@ var dash_dir: Vector2 = Vector2.ZERO
 const DASH_RELOAD_COST: float = 1.5 
 var dash_reload_timer: float = 0.0
 
+#Sword variable field
+var can_slash: bool = true
+
 #Export variables
 #Player rotate export
 @export var turn_speed: float = 10.0  # higher = faster turn
 
-
+#Sword exports
 @export var slash_time: float = 0.2
 @export var sword_return_time: float = 0.5
 @export var weapon_damage: float = 1.0
@@ -43,6 +46,15 @@ func _physics_process(delta: float) -> void:
 	
 	_dash_logic(delta)
 	move_and_slide()
+	
+	if Input.is_action_pressed("attack") and can_slash:
+		$Sprite2D/sword/AnimationPlayer.speed_scale = $Sprite2D/sword/AnimationPlayer.get_animation("slash").length / slash_time
+		$Sprite2D/sword/AnimationPlayer.play_backwards("slash")
+		can_slash = false
+		
+func spawn_slash():
+	pass
+
 
 func _dash_logic(delta: float) -> void:
 	if can_dash and Input.is_action_just_pressed("dash"):
@@ -61,3 +73,7 @@ func _dash_logic(delta: float) -> void:
 			dash_reload_timer -= delta
 		else:
 			can_dash = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	can_slash = true
