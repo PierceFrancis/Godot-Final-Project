@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+#Data fields
+#Movement variable field
 const MAX_SPEED: float = 300
 const ACCELERATION: float = 18.5
 const FRICTION: float = 22.5
 
+#Dash vairiable field
 const DASH_SPEED: float = 5.0
 const DASH_TIME: float = 0.12
 var can_dash: bool = true
@@ -12,7 +15,14 @@ var dash_dir: Vector2 = Vector2.ZERO
 const DASH_RELOAD_COST: float = 1.5 
 var dash_reload_timer: float = 0.0
 
+#Export variables
+#Player rotate export
 @export var turn_speed: float = 10.0  # higher = faster turn
+
+
+@export var slash_time: float = 0.2
+@export var sword_return_time: float = 0.5
+@export var weapon_damage: float = 1.0
 
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
