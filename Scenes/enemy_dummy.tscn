@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7e5c5e5t4hsc"]
+
+[ext_resource type="Texture2D" uid="uid://chhiqtgdyqsu7" path="res://icon.svg" id="1_0xtm3"]
+[ext_resource type="Script" uid="uid://bvwtgyq51j77n" path="res://Scripts/enemy_dummy.gd" id="1_67urq"]
+
+[sub_resource type="Animation" id="Animation_67urq"]
+resource_name = "take_damage"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00076026906, 0.2014713, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.734375, 0.734375), Vector2(0.96093744, 0.96093744)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0015205381, 0.30202955, 0.35),
+"transitions": PackedFloat32Array(1, 3.605001, 0.49999997),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.54901963), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ocrp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rak5c"]
+_data = {
+&"RESET": SubResource("Animation_6ocrp"),
+&"take_damage": SubResource("Animation_67urq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0js5u"]
+size = Vector2(154, 146)
+
+[node name="Enemy_dummy" type="CharacterBody2D"]
+script = ExtResource("1_67urq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0xtm3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_rak5c")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0js5u")

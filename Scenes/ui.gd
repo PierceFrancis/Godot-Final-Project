@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 # --- CONFIGURATION ---
 @export var bar_increase_rate: float = 35.0   # how fast the bar recharges

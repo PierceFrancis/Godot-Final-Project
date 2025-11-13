@@ -17,5 +17,13 @@ texture = ExtResource("1_bbo16")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jb3vm")
 
+[node name="PickupPrompt" type="Label" parent="."]
+offset_left = -61.0
+offset_top = 66.0
+offset_right = 63.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 20
+text = "\"E\" to pickup"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

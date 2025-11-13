@@ -12,8 +12,15 @@ var dash_dir: Vector2 = Vector2.ZERO
 const DASH_RELOAD_COST: float = 1.5 
 var dash_reload_timer: float = 0.0
 
+@export var turn_speed: float = 10.0  # higher = faster turn
 
 func _physics_process(delta: float) -> void:
+	var mouse_pos = get_global_mouse_position()
+	var target_angle = (mouse_pos - global_position).angle()
+
+	# Smoothly interpolate rotation toward the target
+	rotation = lerp_angle(rotation, target_angle, turn_speed * delta)
+	
 	if dash_timer == 0.0:
 		var input: Vector2 = Vector2(Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")).normalized()
@@ -23,8 +30,6 @@ func _physics_process(delta: float) -> void:
 		var velocity_weight_y: float = 1.0 - exp( -(ACCELERATION if input.y else FRICTION) * delta)
 		velocity.y = lerp(velocity.y, input.y * MAX_SPEED, velocity_weight_y)
 		
-		if input.x:
-			$Sprite2D.flip_h = true if input.x < 0 else false
 	
 	_dash_logic(delta)
 	move_and_slide()
@@ -38,8 +43,6 @@ func _dash_logic(delta: float) -> void:
 		dash_dir = velocity
 		velocity = dash_dir * DASH_SPEED
 		
-		if dash_dir.x:
-			$Sprite2D.flip_h = false if dash_dir.x > 0 else true
 	
 	if dash_timer > 0.0:
 		dash_timer = max(0.0, dash_timer - delta)
