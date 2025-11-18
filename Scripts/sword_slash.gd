@@ -2,8 +2,10 @@ extends Node2D
 
 var weapon_damage: float = 1.0
 
-func _ready():
-	$Sprite2D/AnimationPlayer.play("slash")
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		$Sprite2D/AnimationPlayer.play("slash")
+	
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "slash":

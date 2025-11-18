@@ -65,10 +65,18 @@ func _physics_process(delta: float) -> void:
 const sword_slash_preload = preload("res://Scenes/sword_slash.tscn")
 func spawn_slash():
 	var sword_slash_var = sword_slash_preload.instantiate()
+
+	# Position and rotation
 	sword_slash_var.global_position = global_position
-	sword_slash_var.get_node("Sprite2D/AnimationPlayer").speed_scale = sword_slash_var.get_node("Sprite2D/AnimationPlayer").get_animation("slash").length / slash_time 
-	
+	sword_slash_var.global_rotation = global_rotation  # <-- IMPORTANT!
+
+	# Animation speed
+	var ap = sword_slash_var.get_node("Sprite2D/AnimationPlayer")
+	ap.speed_scale = ap.get_animation("slash").length / slash_time 
+
+	# Damage
 	sword_slash_var.weapon_damage = weapon_damage
+
 	get_parent().add_child(sword_slash_var)
 
 func _dash_logic(delta: float) -> void:
