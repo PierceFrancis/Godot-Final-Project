@@ -68,7 +68,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0js5u"]
 size = Vector2(154, 146)
 
-[node name="Enemy_dummy" type="CharacterBody2D"]
+[node name="Enemy_dummy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_67urq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

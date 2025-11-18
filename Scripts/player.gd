@@ -27,6 +27,16 @@ var can_slash: bool = true
 @export var sword_return_time: float = 0.5
 @export var weapon_damage: float = 1.0
 
+#Sword default animaiton
+@onready var sword = $Sprite2D/sword
+
+var sword_default_rotation: float
+var sword_default_offset: Vector2
+
+func _ready():
+	sword_default_rotation = sword.rotation
+	sword_default_offset = sword.offset
+
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	var target_angle = (mouse_pos - global_position).angle()
@@ -49,12 +59,17 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("attack") and can_slash:
 		$Sprite2D/sword/AnimationPlayer.speed_scale = $Sprite2D/sword/AnimationPlayer.get_animation("slash").length / slash_time
-		$Sprite2D/sword/AnimationPlayer.play_backwards("slash")
+		$Sprite2D/sword/AnimationPlayer.play("slash")
 		can_slash = false
-		
-func spawn_slash():
-	pass
 
+const sword_slash_preload = preload("res://Scenes/sword_slash.tscn")
+func spawn_slash():
+	var sword_slash_var = sword_slash_preload.instantiate()
+	sword_slash_var.global_position = global_position
+	sword_slash_var.get_node("Sprite2D/AnimationPlayer").speed_scale = sword_slash_var.get_node("Sprite2D/AnimationPlayer").get_animation("slash").length / slash_time 
+	
+	sword_slash_var.weapon_damage = weapon_damage
+	get_parent().add_child(sword_slash_var)
 
 func _dash_logic(delta: float) -> void:
 	if can_dash and Input.is_action_just_pressed("dash"):
@@ -76,4 +91,9 @@ func _dash_logic(delta: float) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	can_slash = true
+	if anim_name == "slash":
+		can_slash = true
+		
+		# Reset sword transform immediately
+		sword.rotation = sword_default_rotation
+		sword.offset = sword_default_offset
