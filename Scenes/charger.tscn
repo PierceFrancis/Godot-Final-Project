@@ -1,12 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://cclmvq6r67lxa"]
 
 [ext_resource type="Script" uid="uid://dh7klp2yfu4sf" path="res://Scripts/charger.gd" id="1_34ipw"]
+[ext_resource type="Script" uid="uid://kqk3o7wox8aj" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_acnta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_svsoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svsoo"]
 size = Vector2(27.012093, 29.981659)
@@ -28,21 +27,27 @@ shape = SubResource("RectangleShape2D_bxwl7")
 position = Vector2(2.4303285e-06, -2.3841858e-07)
 scale = Vector2(1.497373, 4.181692)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionShape"]
-scale = Vector2(8.860776, -3.7720153)
-shape = SubResource("CircleShape2D_svsoo")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionShape"]
+scale = Vector2(11.177791, 3.765613)
+polygon = PackedVector2Array(0.64048195, 0.06623843, 12.7154455, -12.6058445, 14.231518, -8.469552, 15.371572, -4.5042124, 15.745186, 1.5275365e-08, 15.318198, 4.3717356, 14.035895, 8.732174, 12.764351, 12.6715)
 
 [node name="Killbox" type="Area2D" parent="."]
 position = Vector2(13.096768, 0)
 scale = Vector2(2.0689144, 1.4635081)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
-position = Vector2(0.40927124, -1.5507355)
+position = Vector2(0.79128253, -1.4128411)
 shape = SubResource("RectangleShape2D_svsoo")
-debug_color = Color(0.99918705, 0, 0.13425627, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 
-[connection signal="body_entered" from="DetectionShape" to="." method="_on_area_2d_body_entered"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(1, 4.5978055)
+target_position = Vector2(213.64104, 0.22485775)
+script = ExtResource("2_ljrdh")
+
+[connection signal="body_entered" from="DetectionShape" to="." method="_on_detection_shape_body_entered"]
+[connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]
+[connection signal="body_exited" from="Killbox" to="." method="_on_killbox_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
