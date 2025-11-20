@@ -31,6 +31,7 @@ position = Vector2(525, -354)
 
 [node name="item_pickup" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(-251, -2)
+scale = Vector2(1.0277755, 1.0550616)
 
 [node name="item_pickup2" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(-69, -200)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://btx8kh0afk152"]
+
+[ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_sbxmf"]
+[ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="4_ge5mf"]
+[ext_resource type="PackedScene" uid="uid://b4vjb0pt4vr3g" path="res://Scenes/ui.tscn" id="5_t3s6u"]
+[ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="5_wlync"]
+[ext_resource type="PackedScene" uid="uid://b7e5c5e5t4hsc" path="res://Scenes/enemy_dummy.tscn" id="6_wr34u"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k4tli"]
+vertices = PackedVector2Array(347.3672, -175.39844, 276.78125, -175, -347.03125, -264.6875, -649.96094, -410.8672, 637.25, -395.10938, -386.9922, -266.59375, 659.71094, 440.6797, 347.21875, -56.6875, -72.25, 232.29688, -128.46094, 275, 276.6172, -56.289063, -143.35938, 137.25, -647.03125, 401.28906, -403.0078, 73.67969, -363.0625, 75.578125, -199.59375, 179.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 2, 5), PackedInt32Array(0, 4, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 7, 8, 11), PackedInt32Array(12, 3, 5, 13), PackedInt32Array(14, 2, 1, 10, 11), PackedInt32Array(14, 11, 15, 12, 13), PackedInt32Array(12, 15, 9), PackedInt32Array(6, 12, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-660, -421, 647, -405, 670, 451, -657, 411)])
+agent_radius = 302.55
+
+[sub_resource type="BoxMesh" id="BoxMesh_wlync"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbxmf"]
+size = Vector2(323, 20)
+
+[node name="AnotherTest" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1572.0
+offset_top = -945.0
+offset_right = 1606.0
+offset_bottom = 984.0
+color = Color(0.14139813, 0.31891572, 0.26833078, 1)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_sbxmf")]
+position = Vector2(0, -3)
+rotation = -1.5707964
+
+[node name="weapon_pickup2" parent="." instance=ExtResource("4_ge5mf")]
+position = Vector2(116, -215)
+
+[node name="UI" parent="." instance=ExtResource("5_t3s6u")]
+
+[node name="Enemy_dummy" parent="." instance=ExtResource("6_wr34u")]
+position = Vector2(52, 302)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_k4tli")
+
+[node name="obstacle4" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(-375, -96.00001)
+rotation = 1.6178564
+scale = Vector2(0.99272645, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle4"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_wlync")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle4"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_sbxmf")
+
+[node name="obstacle2" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(-135.99994, 206.00003)
+rotation = 0.92849964
+scale = Vector2(0.3056079, 2.5296962)
+skew = -0.0070174932
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle2"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_wlync")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle2"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_sbxmf")
+
+[node name="obstacle3" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(312, -116.000015)
+rotation = 1.57215
+scale = Vector2(0.3056079, 2.529696)
+skew = -0.0070174932
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="NavigationRegion2D/obstacle3"]
+scale = Vector2(322.17657, 17.191566)
+mesh = SubResource("BoxMesh_wlync")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/obstacle3"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_sbxmf")
+
+[node name="Charger" parent="." node_paths=PackedStringArray("player") groups=["enemy"] instance=ExtResource("5_wlync")]
+position = Vector2(-301, -251)
+player = NodePath("../Player")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cclmvq6r67lxa"]
+[gd_scene load_steps=9 format=3 uid="uid://cclmvq6r67lxa"]
 
 [ext_resource type="Script" uid="uid://dh7klp2yfu4sf" path="res://Scripts/charger.gd" id="1_34ipw"]
 [ext_resource type="Script" uid="uid://kqk3o7wox8aj" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
@@ -10,8 +10,69 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svsoo"]
 size = Vector2(27.012093, 29.981659)
 
+[sub_resource type="Animation" id="Animation_6ocrp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_67urq"]
+resource_name = "take_damage"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00076026906, 0.2014713, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.734375, 0.734375), Vector2(0.96093744, 0.96093744)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0015205381, 0.30202955, 0.35),
+"transitions": PackedFloat32Array(1, 3.605001, 0.49999997),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.54901963), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rak5c"]
+_data = {
+&"RESET": SubResource("Animation_6ocrp"),
+&"take_damage": SubResource("Animation_67urq")
+}
+
 [node name="Charger" type="CharacterBody2D"]
-scale = Vector2(1.2216754, 0.96725625)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_34ipw")
@@ -46,6 +107,11 @@ avoidance_enabled = true
 scale = Vector2(1, 4.5978055)
 target_position = Vector2(213.64104, 0.22485775)
 script = ExtResource("2_ljrdh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rak5c")
+}
 
 [connection signal="body_entered" from="DetectionShape" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]

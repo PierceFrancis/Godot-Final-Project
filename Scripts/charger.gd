@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 350.0
+var health: float = 3.0
 #MAKE SURE PLAYER IN THE INSPECTOR IS SET TO THE PLAYER NODE
 @export var player : Node2D
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
@@ -15,18 +16,24 @@ func _physics_process(delta: float) -> void:
 	if Hostile:
 		if Charging:
 			charge()
-			print("charging")
+			
 		elif !Charging:
 			velocity = Vector2(0.0,0.0)
 			
 			
-			print("not Charging")
+		
 			
-		
-		
+func _ready() -> void:
+	add_to_group("enemy")
 
-
+func take_damage(weapon_damage: float):
+	$Sprite2D/AnimationPlayer.play("take_damage")
+	health -= weapon_damage
+	print("dameged")
 	
+	if health <= 0.0:
+		queue_free()
+
 	
 
 	#move_and_slide()
