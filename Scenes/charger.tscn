@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cclmvq6r67lxa"]
+[gd_scene load_steps=10 format=3 uid="uid://cclmvq6r67lxa"]
 
 [ext_resource type="Script" uid="uid://dh7klp2yfu4sf" path="res://Scripts/charger.gd" id="1_34ipw"]
 [ext_resource type="Script" uid="uid://kqk3o7wox8aj" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
+[ext_resource type="Texture2D" uid="uid://gvvui5egjjm8" path="res://assets/Spear.png" id="2_m3mk2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_acnta"]
 
@@ -80,6 +81,12 @@ script = ExtResource("1_34ipw")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("BoxMesh_acnta")
 
+[node name="Sprite2D" type="Sprite2D" parent="MeshInstance2D"]
+position = Vector2(8, 11)
+rotation = 2.3380907
+scale = Vector2(0.4416357, 0.4416357)
+texture = ExtResource("2_m3mk2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bxwl7")
 
@@ -112,6 +119,8 @@ root_node = NodePath("../MeshInstance2D")
 libraries = {
 &"": SubResource("AnimationLibrary_rak5c")
 }
+
+[node name="ChargerAttack" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="DetectionShape" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]
