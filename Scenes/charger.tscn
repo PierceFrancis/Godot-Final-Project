@@ -72,13 +72,12 @@ _data = {
 &"take_damage": SubResource("Animation_67urq")
 }
 
-[node name="Charger" type="CharacterBody2D"]
+[node name="Charger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_34ipw")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(23.045698, 22.909733)
 mesh = SubResource("BoxMesh_acnta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -109,6 +108,7 @@ target_position = Vector2(213.64104, 0.22485775)
 script = ExtResource("2_ljrdh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MeshInstance2D")
 libraries = {
 &"": SubResource("AnimationLibrary_rak5c")
 }

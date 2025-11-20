@@ -83,6 +83,6 @@ mesh = SubResource("BoxMesh_wlync")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_sbxmf")
 
-[node name="Charger" parent="." node_paths=PackedStringArray("player") groups=["enemy"] instance=ExtResource("5_wlync")]
+[node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_wlync")]
 position = Vector2(-301, -251)
 player = NodePath("../Player")
