@@ -21,30 +21,42 @@ metadata/_edit_lock_ = true
 rotation = -1.5707964
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(268, 36)
+position = Vector2(-820, 463)
+rotation = 3.1415927
+scale = Vector2(0.3, 0.3)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-420, -342)
+position = Vector2(-1107, -333.00003)
 rotation = -1.583841
 scale = Vector2(0.3, 0.3)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(525, -354)
+[node name="StaticBody2D5" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(-542, -436)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
 
-[node name="item_pickup" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-251, -2)
-scale = Vector2(1.0277755, 1.0550616)
+[node name="StaticBody2D6" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(-542, 325)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(-827, -617)
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(-1103, 179)
+rotation = -1.5707964
+scale = Vector2(0.3, 0.3)
 
 [node name="item_pickup2" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-69, -200)
-
-[node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(309, -135)
-
-[node name="weapon_pickup2" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(116, -212)
+position = Vector2(-180, -32)
 
 [node name="UI" parent="." instance=ExtResource("5_kry3j")]
 
 [node name="Enemy_dummy" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(52, 305)
+position = Vector2(-844, 269)
+
+[node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-380, -29)
+scale = Vector2(1, 1)
