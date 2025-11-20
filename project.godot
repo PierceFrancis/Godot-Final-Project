@@ -23,6 +23,10 @@ GameManager="*res://Scripts/Game Manager.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 action_button={

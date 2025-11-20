@@ -25,6 +25,8 @@ position = Vector2(268, 36)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(-420, -342)
+rotation = -1.583841
+scale = Vector2(0.3, 0.3)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(525, -354)
