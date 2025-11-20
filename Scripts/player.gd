@@ -46,6 +46,7 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	sword.visible = GameManager.weapon
 	# Rotate player toward mouse
 	var mouse_pos = get_global_mouse_position()
 	var target_angle = (mouse_pos - global_position).angle()
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Sword attack
-	if Input.is_action_pressed("attack") and can_slash:
+	if GameManager.weapon and Input.is_action_pressed("attack") and can_slash:
 		can_slash = false
 
 		# Sword animation speed

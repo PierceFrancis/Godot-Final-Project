@@ -9,7 +9,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "slash":
-		queue_free()
+		self.hide()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
