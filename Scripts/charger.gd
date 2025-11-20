@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 
+
 const SPEED = 350.0
 var health: float = 3.0
 #MAKE SURE PLAYER IN THE INSPECTOR IS SET TO THE PLAYER NODE
@@ -24,10 +25,11 @@ func _physics_process(delta: float) -> void:
 		
 			
 func _ready() -> void:
+	
 	add_to_group("enemy")
 
 func take_damage(weapon_damage: float):
-	$Sprite2D/AnimationPlayer.play("take_damage")
+	$AnimationPlayer.play("take_damage")
 	health -= weapon_damage
 	print("dameged")
 	
