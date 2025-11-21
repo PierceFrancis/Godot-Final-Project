@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ecawa3jdj2h2"]
 
 [ext_resource type="Script" uid="uid://bgnsp1sf8ytk7" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://chhiqtgdyqsu7" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://bjihp8df4juia" path="res://assets/Walk_1 (trsprt).png" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://cng63co5ctcqh" path="res://assets/sword-wikia-sword-png-image-a8bef8c261899f5772aa0a24461c573a.png" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://c5s7qblru6des" path="res://Scenes/sword_slash.tscn" id="4_dewec"]
 
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-1.3962634, -1.9198622, -2.6179938, -3.1415927]
+"values": [-1.2217305, -1.9198622, -2.6179938, -3.2288592]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -69,10 +69,10 @@ tracks/2/path = NodePath(".:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.05, 0.1, 0.19980435, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(300, 500), Vector2(650, 500), Vector2(500, 500), Vector2(500, 300)]
+"values": [Vector2(600, 700), Vector2(700, 540), Vector2(650, 500), Vector2(500, 500), Vector2(600, 400), Vector2(500, 300)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixxa"]
@@ -82,7 +82,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(123, 76.1073)
+size = Vector2(171, 76.1073)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -90,11 +90,12 @@ script = ExtResource("1_kyqiw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5707964
-texture = ExtResource("1_rpqav")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_dewec")
 
 [node name="sword" type="Sprite2D" parent="Sprite2D"]
 rotation = -1.3962634
-scale = Vector2(0.15020427, 0.15020427)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_gntrk")
 offset = Vector2(300, 500)
 
@@ -104,7 +105,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.9073486e-06, 3.8365533e-06)
+position = Vector2(-2.404127e-07, 5.5)
 rotation = 1.5707964
 scale = Vector2(1, 1.603)
 shape = SubResource("RectangleShape2D_kyqiw")
