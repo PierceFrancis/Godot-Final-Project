@@ -1,10 +1,83 @@
-[gd_scene load_steps=10 format=3 uid="uid://cclmvq6r67lxa"]
+[gd_scene load_steps=14 format=3 uid="uid://cclmvq6r67lxa"]
 
 [ext_resource type="Script" uid="uid://dh7klp2yfu4sf" path="res://Scripts/charger.gd" id="1_34ipw"]
 [ext_resource type="Script" uid="uid://kqk3o7wox8aj" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
 [ext_resource type="Texture2D" uid="uid://gvvui5egjjm8" path="res://assets/Spear.png" id="2_m3mk2"]
+[ext_resource type="PackedScene" uid="uid://c4i4kclxk6sa2" path="res://Scenes/charger_attack.tscn" id="4_775b5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_acnta"]
+
+[sub_resource type="Animation" id="Animation_net6l"]
+resource_name = "thrust"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.3380907, 2.2366703, 2.3380907]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 16), Vector2(42, 16), Vector2(-1, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_o0110"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.3380907]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ro4d8"]
+_data = {
+&"RESET": SubResource("Animation_o0110"),
+&"thrust": SubResource("Animation_net6l")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
 
@@ -81,11 +154,16 @@ script = ExtResource("1_34ipw")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("BoxMesh_acnta")
 
-[node name="Sprite2D" type="Sprite2D" parent="MeshInstance2D"]
-position = Vector2(8, 11)
+[node name="spear" type="Sprite2D" parent="MeshInstance2D"]
+position = Vector2(-1, 16)
 rotation = 2.3380907
 scale = Vector2(0.4416357, 0.4416357)
 texture = ExtResource("2_m3mk2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance2D/spear"]
+libraries = {
+&"": SubResource("AnimationLibrary_ro4d8")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bxwl7")
@@ -120,7 +198,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_rak5c")
 }
 
-[node name="ChargerAttack" type="Node2D" parent="."]
+[node name="ChargerAttack" parent="." instance=ExtResource("4_775b5")]
 
 [connection signal="body_entered" from="DetectionShape" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]

@@ -1,15 +1,20 @@
 extends CharacterBody2D
 
-
-
 const SPEED = 350.0
 var health: float = 3.0
 #MAKE SURE PLAYER IN THE INSPECTOR IS SET TO THE PLAYER NODE
 @export var player : Node2D
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
+
+
+@onready var spear = $MeshInstance2D/spear
+@onready var chargerAttack = $ChargerAttack
+
+
+
+
 #Hostile or idle Bool
 var Hostile : bool = false
-
 var Charging: bool = false
 
 func _physics_process(delta: float) -> void:
@@ -74,10 +79,11 @@ func _on_detection_shape_body_entered(body: Node2D) -> void:
 
 
 func _on_killbox_body_entered(body: Node2D) -> void:
-	Charging = false
+	if body.name == "Player":
+		Charging = false
 	
-	velocity = Vector2(0.0,0.0)
-	move_and_slide()
+		velocity = Vector2(0.0,0.0)
+		move_and_slide()
 
 
 
