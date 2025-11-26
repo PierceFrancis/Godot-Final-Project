@@ -44,6 +44,8 @@ position = Vector2(26.000004, 0)
 scale = Vector2(0.84000003, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(37.428566, 8)
+position = Vector2(38.09523, 6)
 shape = SubResource("RectangleShape2D_jm7i4")
 debug_color = Color(0.71400446, 0.48300147, 0.076736905, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

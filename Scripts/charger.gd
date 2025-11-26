@@ -9,13 +9,25 @@ var health: float = 3.0
 
 @onready var spear = $MeshInstance2D/spear
 @onready var chargerAttack = $ChargerAttack
+@onready var spear_hitbox = $ChargerAttack/Area2D/CollisionShape2D
+
+# Spear timing/damage
+@export var thrust_time: float = 0.2
+@export var spear_return_time: float = 0.5
+@export var weapon_damage: float = 1.0
+
+var spear_default_rotation: float
+var spear_default_position: Vector2
+
+var can_thrust: bool = true
 
 
+#State bools
 
-
-#Hostile or idle Bool
+#could be replaced with FSM
 var Hostile : bool = false
 var Charging: bool = false
+var Attacking: bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -28,10 +40,52 @@ func _physics_process(delta: float) -> void:
 			
 			
 		
+	
+		# attack stuff
+	if Attacking and can_thrust:
+		can_thrust = false
+		Attacking = false
+		print("tyring to attack")
+		
+		var ap = $MeshInstance2D/spear/AnimationPlayer
+		ap.speed_scale = ap.get_animation("thrust").length / thrust_time
+		ap.play("thrust")
+		
+		
 			
+
+func spawn_thrust():
+	chargerAttack.global_position = spear.global_position
+	chargerAttack.global_rotation = spear.global_rotation
+	
+	chargerAttack.show()
+	spear_hitbox.disabled = false
+
+	# Match animation speed
+	
+
+	# Apply damage value
+	chargerAttack.weapon_damage = weapon_damage
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "thrust":
+		can_thrust = true
+
+		# Hide the spear hitbox
+		chargerAttack.hide()
+		spear_hitbox.disabled = true
+
+		# Reset spear position
+		spear.rotation = spear_default_rotation
+		spear.position = spear_default_position
+	
 func _ready() -> void:
 	
 	add_to_group("enemy")
+	
+	#hide spear hitbox 
+	
+	spear_hitbox.disabled = true
 
 func take_damage(weapon_damage: float):
 	$AnimationPlayer.play("take_damage")
@@ -61,8 +115,6 @@ func update_target_position(target_pos: Vector2):
 	nav_agent.target_position = target_pos
 
 
-
-
 	
 	
 
@@ -81,13 +133,17 @@ func _on_detection_shape_body_entered(body: Node2D) -> void:
 func _on_killbox_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		Charging = false
+		Attacking = true
 	
 		velocity = Vector2(0.0,0.0)
+		
 		move_and_slide()
 
 
 
 
 func _on_killbox_body_exited(body: Node2D) -> void:
-	if Hostile:
-		Charging = true
+	if body.name == "Player":
+		if Hostile:
+			Charging = true
+	Attacking =false

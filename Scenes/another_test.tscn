@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://btx8kh0afk152"]
 
-[ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_sbxmf"]
-[ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="4_ge5mf"]
-[ext_resource type="PackedScene" uid="uid://b4vjb0pt4vr3g" path="res://Scenes/ui.tscn" id="5_t3s6u"]
-[ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="5_wlync"]
-[ext_resource type="PackedScene" uid="uid://b7e5c5e5t4hsc" path="res://Scenes/enemy_dummy.tscn" id="6_wr34u"]
+[ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_nj2g3"]
+[ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="2_7tkmi"]
+[ext_resource type="PackedScene" uid="uid://b4vjb0pt4vr3g" path="res://Scenes/ui.tscn" id="3_mpmpg"]
+[ext_resource type="PackedScene" uid="uid://b7e5c5e5t4hsc" path="res://Scenes/enemy_dummy.tscn" id="4_ga5xi"]
+[ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="5_xnb2w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k4tli"]
 vertices = PackedVector2Array(347.3672, -175.39844, 276.78125, -175, -347.03125, -264.6875, -649.96094, -410.8672, 637.25, -395.10938, -386.9922, -266.59375, 659.71094, 440.6797, 347.21875, -56.6875, -72.25, 232.29688, -128.46094, 275, 276.6172, -56.289063, -143.35938, 137.25, -647.03125, 401.28906, -403.0078, 73.67969, -363.0625, 75.578125, -199.59375, 179.9375)
@@ -27,17 +27,20 @@ offset_bottom = 984.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_sbxmf")]
+[node name="Player" parent="." instance=ExtResource("1_nj2g3")]
 position = Vector2(0, -3)
 rotation = -1.5707964
+scale = Vector2(0.29305613, 0.29305613)
 
-[node name="weapon_pickup2" parent="." instance=ExtResource("4_ge5mf")]
+[node name="weapon_pickup2" parent="." instance=ExtResource("2_7tkmi")]
 position = Vector2(116, -215)
 
-[node name="UI" parent="." instance=ExtResource("5_t3s6u")]
+[node name="UI" parent="." instance=ExtResource("3_mpmpg")]
 
-[node name="Enemy_dummy" parent="." instance=ExtResource("6_wr34u")]
+[node name="Enemy_dummy" parent="." instance=ExtResource("4_ga5xi")]
 position = Vector2(52, 302)
+collision_layer = 1
+collision_mask = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_k4tli")
@@ -83,6 +86,6 @@ mesh = SubResource("BoxMesh_wlync")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_sbxmf")
 
-[node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_wlync")]
-position = Vector2(-301, -251)
+[node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_xnb2w")]
+position = Vector2(-271, -204)
 player = NodePath("../Player")

@@ -23,27 +23,15 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".:offset")
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, 16), Vector2(42, 16), Vector2(-1, 16)]
+"values": [Vector2(-1, 16), Vector2(18, 15.999999), Vector2(-1, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_o0110"]
@@ -82,7 +70,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svsoo"]
-size = Vector2(27.012093, 29.981659)
+size = Vector2(27.651697, 24.59843)
 
 [sub_resource type="Animation" id="Animation_6ocrp"]
 length = 0.001
@@ -181,7 +169,7 @@ position = Vector2(13.096768, 0)
 scale = Vector2(2.0689144, 1.4635081)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
-position = Vector2(0.79128253, -1.4128411)
+position = Vector2(1.111083, 0.6832902)
 shape = SubResource("RectangleShape2D_svsoo")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
