@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr35807hhgwhu"]
+
+[ext_resource type="Texture2D" uid="uid://dbhq45n7ugxp6" path="res://assets/Charge_1.png" id="1_408pl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6av6v"]
+size = Vector2(61, 129)
+
+[node name="Crossbowman" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.07427761, 0.07427761)
+texture = ExtResource("1_408pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+rotation = 0.004939367
+shape = SubResource("RectangleShape2D_6av6v")
