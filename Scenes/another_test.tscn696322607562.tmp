@@ -87,5 +87,8 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_sbxmf")
 
 [node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_xnb2w")]
-position = Vector2(-276, -216)
+position = Vector2(-271, -204)
 player = NodePath("../Player")
+thrust_time = 0.2
+spear_return_time = 0.5
+weapon_damage = 1.0

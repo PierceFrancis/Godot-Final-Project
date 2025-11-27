@@ -7,7 +7,7 @@ var health: float = 3.0
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
 
-@onready var spear = $MeshInstance2D/spear
+@onready var spear = $Sprite2D/spear
 @onready var chargerAttack = $ChargerAttack
 @onready var spear_hitbox = $ChargerAttack/Area2D/CollisionShape2D
 
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		Attacking = false
 		print("tyring to attack")
 		
-		var ap = $MeshInstance2D/spear/AnimationPlayer
+		var ap = $Sprite2D/spear/AnimationPlayer
 		ap.speed_scale = ap.get_animation("thrust").length / thrust_time
 		ap.play("thrust")
 		
@@ -147,3 +147,4 @@ func _on_killbox_body_exited(body: Node2D) -> void:
 		if Hostile:
 			Charging = true
 	Attacking =false
+	can_thrust = true
