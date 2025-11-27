@@ -41,6 +41,7 @@ speed_scale = 0.975
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(26.000004, 0)
+rotation = -0.05788791
 scale = Vector2(0.84000003, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
