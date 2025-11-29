@@ -12,7 +12,16 @@ rotation = 1.5707964
 scale = Vector2(0.07427761, 0.07427761)
 texture = ExtResource("1_408pl")
 
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(-13.463026, -444.27924)
+rotation = -1.5707964
+scale = Vector2(13.463007, 13.463007)
+gizmo_extents = 9.1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2.5)
 rotation = 0.004939367
 shape = SubResource("RectangleShape2D_6av6v")
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
