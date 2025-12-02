@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cng63co5ctcqh" path="res://assets/sword-wikia-sword-png-image-a8bef8c261899f5772aa0a24461c573a.png" id="3_12psw"]
 
 [node name="weapon_pickup" instance=ExtResource("1_tqm4g")]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("2_50o1u")
 
 [node name="Sprite2D" parent="." index="0"]

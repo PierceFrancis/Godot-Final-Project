@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cng63co5ctcqh" path="res://assets/sword-wikia-sword-png-image-a8bef8c261899f5772aa0a24461c573a.png" id="1_stoac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ftuh"]
-radius = 19.209373
+radius = 259.03088
 
 [node name="thrown_sword" type="Area2D"]
+scale = Vector2(0.18, 0.18)
 script = ExtResource("1_0ftuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5707964
-scale = Vector2(0.08, 0.08)
+rotation = -0.7853982
 texture = ExtResource("1_stoac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

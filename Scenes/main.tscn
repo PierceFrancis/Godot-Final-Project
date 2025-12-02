@@ -54,8 +54,7 @@ position = Vector2(-180, -32)
 [node name="Enemy_dummy" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(-844, 269)
 
-[node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(-380, -29)
-scale = Vector2(1, 1)
-
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-406, -19)
