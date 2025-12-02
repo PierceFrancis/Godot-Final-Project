@@ -17,9 +17,6 @@ offset_bottom = 984.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-rotation = -1.5707964
-
 [node name="StaticBody2D" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(-820, 463)
 rotation = 3.1415927
@@ -60,3 +57,5 @@ position = Vector2(-844, 269)
 [node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
 position = Vector2(-380, -29)
 scale = Vector2(1, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]

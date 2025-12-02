@@ -39,6 +39,8 @@ var sword_default_offset: Vector2
 func _ready():
 	sword_default_rotation = sword.rotation
 	sword_default_offset = sword.offset
+	print(sword.offset)
+	print(sword.rotation)
 
 	# Hide slash hitbox initially
 	slash.hide()
