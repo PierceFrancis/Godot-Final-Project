@@ -4,9 +4,11 @@ extends CharacterBody2D
 const SPEED = 300.0
 @export var Arrow: PackedScene
 @export var main : Node2D
+var health: float = 3.0
 
 @onready var bow_pos = $BowPos
 @onready var bow_dir = $BowDir
+@onready var attack_cooldown = $Attackcooldown
 
 signal enemy_shot_arrow(arrow, postion, direction)
 
@@ -22,15 +24,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	#pass
 	
 func shoot():
-	var arrow_instance = Arrow.instantiate()
-	
-	#arrow_instance.global_position = bow_pos.global_position
-	
-	
-	#var target = get_global_mouse_position()
-	#old direction var
-	#var direction_to_mouse = (target - bow_pos.global_position).normalized()
-	
-	var direction = (bow_dir.global_position - bow_pos.global_position).normalized()
-	#arrow_instance.set_direction(direction_to_mouse)
-	emit_signal("enemy_shot_arrow",arrow_instance,bow_pos.global_position,direction)
+	if attack_cooldown.is_stopped():
+		var arrow_instance = Arrow.instantiate()
+		var direction = (bow_dir.global_position - bow_pos.global_position).normalized()
+		emit_signal("enemy_shot_arrow",arrow_instance,bow_pos.global_position,direction)
+		attack_cooldown.start()
+	else:
+		pass
+func handle_hit():
+	health -= 1.0
+	print("crossbowmen hit")

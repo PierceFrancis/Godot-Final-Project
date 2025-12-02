@@ -19,6 +19,8 @@ var health: float = 3.0
 @onready var spear_default_rotation: float
 @onready var spear_default_position: Vector2
 
+@onready var attack_cooldown = $attackCooldown
+
 var can_thrust: bool = true
 
 
@@ -42,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		
 	
 		# attack stuff
-	if Attacking and can_thrust:
+	if Attacking and can_thrust and attack_cooldown.is_stopped():
 		can_thrust = false
 		Attacking = false
 		print("tyring to attack")

@@ -22,3 +22,9 @@ position = Vector2(2.5388215, -44.345516)
 rotation = -2.3590503
 scale = Vector2(0.15184376, 0.15184376)
 texture = ExtResource("2_2ndhl")
+
+[node name="KillTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
