@@ -23,8 +23,11 @@ rotation = 0.004939367
 shape = SubResource("RectangleShape2D_6av6v")
 
 [node name="BowPos" type="Marker2D" parent="."]
-position = Vector2(32, 48)
+position = Vector2(9.1, 50)
 gizmo_extents = 9.1
+
+[node name="BowDir" type="Marker2D" parent="."]
+position = Vector2(17.1, 50)
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true

@@ -5,6 +5,7 @@ var direction =Vector2.ZERO
 
 func set_direction(direction: Vector2):
 	self.direction = direction
+	rotation += direction.angle()
 
 
 # Called when the node enters the scene tree for the first time.

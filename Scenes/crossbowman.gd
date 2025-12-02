@@ -6,6 +6,7 @@ const SPEED = 300.0
 @export var main : Node2D
 
 @onready var bow_pos = $BowPos
+@onready var bow_dir = $BowDir
 
 signal enemy_shot_arrow(arrow, postion, direction)
 
@@ -25,7 +26,11 @@ func shoot():
 	
 	#arrow_instance.global_position = bow_pos.global_position
 	
-	var target = get_global_mouse_position()
-	var direction_to_mouse = (target - bow_pos.global_position).normalized()
+	
+	#var target = get_global_mouse_position()
+	#old direction var
+	#var direction_to_mouse = (target - bow_pos.global_position).normalized()
+	
+	var direction = (bow_dir.global_position - bow_pos.global_position).normalized()
 	#arrow_instance.set_direction(direction_to_mouse)
-	emit_signal("enemy_shot_arrow",arrow_instance,bow_pos.position,direction_to_mouse)
+	emit_signal("enemy_shot_arrow",arrow_instance,bow_pos.global_position,direction)
