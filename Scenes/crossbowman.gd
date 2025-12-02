@@ -3,13 +3,14 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 @export var Arrow: PackedScene
+@export var main : Node2D
 
 @onready var bow_pos = $BowPos
 
-
+signal enemy_shot_arrow(arrow, postion, direction)
 
 func _physics_process(delta: float) -> void:
-	pass
+	look_at(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("action_button"):
@@ -22,10 +23,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot():
 	var arrow_instance = Arrow.instantiate()
 	
-	arrow_instance.global_position = bow_pos.global_position
-	get_parent().add_child(arrow_instance)
-	
+	#arrow_instance.global_position = bow_pos.global_position
 	
 	var target = get_global_mouse_position()
-	var direction_to_mouse = (target - arrow_instance.global_position).normalized()
-	arrow_instance.set_direction(direction_to_mouse)
+	var direction_to_mouse = (target - bow_pos.global_position).normalized()
+	#arrow_instance.set_direction(direction_to_mouse)
+	emit_signal("enemy_shot_arrow",arrow_instance,bow_pos.position,direction_to_mouse)
