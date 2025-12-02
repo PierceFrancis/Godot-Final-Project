@@ -6,7 +6,7 @@ var health: float = 3.0
 @export var player : Node2D
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
-
+#attack variables
 @onready var spear = $Sprite2D/spear
 @onready var chargerAttack = $ChargerAttack
 @onready var spear_hitbox = $ChargerAttack/Area2D/CollisionShape2D
@@ -16,8 +16,8 @@ var health: float = 3.0
 @export var spear_return_time: float = 0.5
 @export var weapon_damage: float = 1.0
 
-var spear_default_rotation: float
-var spear_default_position: Vector2
+@onready var spear_default_rotation: float
+@onready var spear_default_position: Vector2
 
 var can_thrust: bool = true
 
@@ -70,14 +70,19 @@ func spawn_thrust():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "thrust":
 		can_thrust = true
+		#print("anim done")
 
 		# Hide the spear hitbox
 		chargerAttack.hide()
 		spear_hitbox.disabled = true
 
-		# Reset spear position
+		
 		spear.rotation = spear_default_rotation
 		spear.position = spear_default_position
+		
+		spear_hitbox.rotation = 0
+		
+		#chargerAttack.rotation = 0
 	
 func _ready() -> void:
 	

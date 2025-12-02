@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://btx8kh0afk152"]
+[gd_scene load_steps=12 format=3 uid="uid://btx8kh0afk152"]
 
+[ext_resource type="Script" uid="uid://ckssnovhnvsth" path="res://Scenes/another_test.gd" id="1_ga5xi"]
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_nj2g3"]
 [ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="2_7tkmi"]
 [ext_resource type="PackedScene" uid="uid://b4vjb0pt4vr3g" path="res://Scenes/ui.tscn" id="3_mpmpg"]
 [ext_resource type="PackedScene" uid="uid://b7e5c5e5t4hsc" path="res://Scenes/enemy_dummy.tscn" id="4_ga5xi"]
 [ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="5_xnb2w"]
 [ext_resource type="PackedScene" uid="uid://dr35807hhgwhu" path="res://Scenes/crossbowman.tscn" id="6_7tkmi"]
-[ext_resource type="PackedScene" uid="uid://ba4jbo5qgkia4" path="res://arrow.tscn" id="7_mpmpg"]
+[ext_resource type="Script" uid="uid://cle4mv7h56yio" path="res://Scenes/arrow_manager.gd" id="7_mpmpg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k4tli"]
 vertices = PackedVector2Array(347.3672, -175.39844, 276.78125, -175, -347.03125, -264.6875, -649.96094, -410.8672, 637.25, -395.10938, -386.9922, -266.59375, 659.71094, 440.6797, 347.21875, -56.6875, -72.25, 232.29688, -128.46094, 275, 276.6172, -56.289063, -143.35938, 137.25, -647.03125, 401.28906, -403.0078, 73.67969, -363.0625, 75.578125, -199.59375, 179.9375)
@@ -20,6 +21,7 @@ agent_radius = 302.55
 size = Vector2(323, 20)
 
 [node name="AnotherTest" type="Node2D"]
+script = ExtResource("1_ga5xi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1572.0
@@ -92,9 +94,12 @@ shape = SubResource("RectangleShape2D_sbxmf")
 position = Vector2(-276, -216)
 player = NodePath("../Player")
 
-[node name="Crossbowman" parent="." instance=ExtResource("6_7tkmi")]
+[node name="Crossbowman" parent="." node_paths=PackedStringArray("main") instance=ExtResource("6_7tkmi")]
 position = Vector2(-255.99998, -40.000015)
 scale = Vector2(0.31619826, 0.31619826)
+main = NodePath("..")
 
-[node name="arrow" parent="." instance=ExtResource("7_mpmpg")]
-position = Vector2(-240, -40)
+[node name="ArrowManager" type="Node2D" parent="."]
+position = Vector2(-255.99998, -40.000015)
+scale = Vector2(0.31619826, 0.31619826)
+script = ExtResource("7_mpmpg")
