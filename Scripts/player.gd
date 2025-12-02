@@ -114,7 +114,9 @@ func _dash_logic(delta: float) -> void:
 			dash_reload_timer -= delta
 		else:
 			can_dash = true
-
+func take_damage(weapon_damage: float):
+	#$Sprite2D/AnimationPlayer.play("take_damage")
+	health -= weapon_damage
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "slash":
