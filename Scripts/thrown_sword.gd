@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: float = 1200.0
 @export var pickup_made: PackedScene = preload("res://Scenes/weapon_pickup.tscn")
+ 
 
 var direction: Vector2 = Vector2.ZERO
 var ignore_body: Node = null
@@ -20,7 +21,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body == ignore_body:
 		return
-	if body.is_in_group("enemy"):
+	if body.is_in_group(""):
 		# Example: reduce health, trigger effect, etc.
 		GameManager.lives -= 1
 		print("Hit player:", body.name)
