@@ -10,7 +10,7 @@ size = Vector2(5.077644, 97.35901)
 rotation = 1.5707964
 scale = Vector2(1.5755341, 0.42845365)
 script = ExtResource("1_l5ahi")
-speed = 5
+speed = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5388212, -44.67949)
