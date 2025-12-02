@@ -1,27 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr35807hhgwhu"]
+[gd_scene load_steps=5 format=3 uid="uid://dr35807hhgwhu"]
 
+[ext_resource type="Script" uid="uid://bxd0kkcw4um5a" path="res://Scenes/crossbowman.gd" id="1_6av6v"]
 [ext_resource type="Texture2D" uid="uid://dbhq45n7ugxp6" path="res://assets/Charge_1.png" id="1_408pl"]
+[ext_resource type="PackedScene" uid="uid://ba4jbo5qgkia4" path="res://arrow.tscn" id="2_b2gjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6av6v"]
 size = Vector2(61, 129)
 
 [node name="Crossbowman" type="CharacterBody2D"]
+script = ExtResource("1_6av6v")
+Arrow = ExtResource("2_b2gjw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5707964
 scale = Vector2(0.07427761, 0.07427761)
 texture = ExtResource("1_408pl")
 
-[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-13.463026, -444.27924)
-rotation = -1.5707964
-scale = Vector2(13.463007, 13.463007)
-gizmo_extents = 9.1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2.5)
 rotation = 0.004939367
 shape = SubResource("RectangleShape2D_6av6v")
+
+[node name="BowPos" type="Marker2D" parent="."]
+position = Vector2(32, 48)
+gizmo_extents = 9.1
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
