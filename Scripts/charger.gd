@@ -94,6 +94,8 @@ func _ready() -> void:
 	
 	spear_hitbox.disabled = true
 
+#damage funcs 
+
 func take_damage(weapon_damage: float):
 	$AnimationPlayer.play("take_damage")
 	health -= weapon_damage
@@ -101,7 +103,9 @@ func take_damage(weapon_damage: float):
 	
 	if health <= 0.0:
 		queue_free()
-
+func handle_hit():
+	health -= 1.0
+	print("crossbowmen hit")
 	
 
 	#move_and_slide()

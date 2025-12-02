@@ -34,3 +34,4 @@ func _on_kill_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("handle_hit"):
 		body.handle_hit()
+		queue_free()

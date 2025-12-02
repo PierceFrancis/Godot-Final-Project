@@ -122,6 +122,9 @@ func _dash_logic(delta: float) -> void:
 func take_damage(weapon_damage: float):
 	#$Sprite2D/AnimationPlayer.play("take_damage")
 	GameManager.lives -= weapon_damage
+func handle_hit():
+	GameManager.lives -= 1.0
+	print("player hit",GameManager.lives)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "slash":
