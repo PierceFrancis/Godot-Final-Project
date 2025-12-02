@@ -17,6 +17,9 @@ var dash_reload_timer: float = 0.0
 # Sword variables
 var can_slash: bool = true
 
+#Throwable variables
+var throwable_item_scene: PackedScene = preload("res://Scenes/thrown_sword.tscn")
+
 # Rotation
 @export var turn_speed: float = 10.0
 
@@ -79,7 +82,9 @@ func _physics_process(delta: float) -> void:
 		ap.play("slash")
 
 		spawn_slash()
-
+	
+	if GameManager.weapon and Input.is_action_pressed("throw_weapon"):
+		throw_sword()
 
 func spawn_slash():
 
@@ -129,3 +134,22 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# Reset sword position
 		sword.rotation = sword_default_rotation
 		sword.offset = sword_default_offset
+		
+func throw_sword() -> void:
+	var throwable = throwable_item_scene.instantiate()
+	get_tree().current_scene.add_child(throwable)
+
+	# spawn in front
+	var spawn_offset := Vector2(32, 0).rotated(rotation)
+	throwable.global_position = global_position + spawn_offset
+
+	# add random spread (example ±15°)
+	var spread := deg_to_rad(randf_range(-15, 15))
+	throwable.direction = Vector2.RIGHT.rotated(rotation + spread)
+	throwable.rotation = rotation + spread
+
+	# tell the projectile who threw it (no has_variable check needed)
+	throwable.ignore_body = self
+
+	# Reduce the correct pickup counter
+	GameManager.weapon = false
