@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://dswlgu3ldtdfl"]
+[gd_scene load_steps=8 format=3 uid="uid://dswlgu3ldtdfl"]
 
 [ext_resource type="Script" uid="uid://dgb8kdfaka3pp" path="res://Scripts/thrown_sword.gd" id="1_0ftuh"]
 [ext_resource type="Texture2D" uid="uid://cng63co5ctcqh" path="res://assets/sword-wikia-sword-png-image-a8bef8c261899f5772aa0a24461c573a.png" id="1_stoac"]
+[ext_resource type="Texture2D" uid="uid://ca7c2ppt7nbrf" path="res://assets/slash.png" id="3_n6k5b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ftuh"]
 radius = 259.03088
+
+[sub_resource type="Animation" id="Animation_bekcv"]
+resource_name = "flying"
+length = 0.17
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(300, 40), Vector2(200, 20), Vector2(100, 0), Vector2(0, -20), Vector2(-100, -40), Vector2(-200, -60)]
+}
+
+[sub_resource type="Animation" id="Animation_k47k1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7v6b"]
+_data = {
+&"RESET": SubResource("Animation_k47k1"),
+&"flying": SubResource("Animation_bekcv")
+}
 
 [node name="thrown_sword" type="Area2D"]
 scale = Vector2(0.18, 0.18)
@@ -16,5 +54,17 @@ texture = ExtResource("1_stoac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ftuh")
+
+[node name="slash" type="Sprite2D" parent="."]
+position = Vector2(300, 40)
+scale = Vector2(6, 6)
+texture = ExtResource("3_n6k5b")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="slash"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_n7v6b")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
