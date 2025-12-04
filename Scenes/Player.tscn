@@ -82,7 +82,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(171, 76.1073)
+size = Vector2(171, 30.567684)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -106,7 +106,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.404127e-07, 5.5)
+position = Vector2(-14.499999, 5.4999995)
 rotation = 1.5707964
 scale = Vector2(1, 1.603)
 shape = SubResource("RectangleShape2D_kyqiw")

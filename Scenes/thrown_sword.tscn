@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cng63co5ctcqh" path="res://assets/sword-wikia-sword-png-image-a8bef8c261899f5772aa0a24461c573a.png" id="1_stoac"]
 [ext_resource type="Texture2D" uid="uid://ca7c2ppt7nbrf" path="res://assets/slash.png" id="3_n6k5b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ftuh"]
-radius = 259.03088
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6k5b"]
+radius = 50.000004
+height = 688.8889
 
 [sub_resource type="Animation" id="Animation_k47k1"]
 length = 0.001
@@ -86,10 +87,13 @@ texture = ExtResource("1_stoac")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(1.0000001, 1.0000001)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5707964
 scale = Vector2(0.99999994, 0.99999994)
-shape = SubResource("CircleShape2D_0ftuh")
+shape = SubResource("CapsuleShape2D_n6k5b")
 
 [node name="slash" type="Sprite2D" parent="."]
 position = Vector2(300, 40)

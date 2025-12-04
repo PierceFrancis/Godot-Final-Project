@@ -34,10 +34,12 @@ func _spawn_pickup() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body == ignore_body:
+		return
 	if body.is_in_group("enemy"):
 		# Example: reduce health, trigger effect, etc.
 		body.take_damage(weapon_damage)
-		print("Hit player:", body.name)
+		print("Hit enemy:", body.name)
 		_spawn_pickup()
 		queue_free()
 	else:
