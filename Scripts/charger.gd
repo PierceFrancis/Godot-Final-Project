@@ -118,10 +118,12 @@ func charge():
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	var new_velocity: Vector2 = current_position.direction_to(next_path_position)
 	nav_agent.velocity = new_velocity
-	look_at(player.position)
+	if player:
+		look_at(player.position)
 	#move_and_slide()
 	
-	update_target_position(player.global_transform.origin)
+	if player:
+		update_target_position(player.global_transform.origin)
 	
 func update_target_position(target_pos: Vector2):
 	nav_agent.target_position = target_pos

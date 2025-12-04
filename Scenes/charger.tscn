@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cclmvq6r67lxa"]
 
 [ext_resource type="Script" uid="uid://dh7klp2yfu4sf" path="res://Scripts/charger.gd" id="1_34ipw"]
-[ext_resource type="Script" uid="uid://kqk3o7wox8aj" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
+[ext_resource type="Script" path="res://Scenes/ray_cast_2d.gd" id="2_ljrdh"]
 [ext_resource type="Texture2D" uid="uid://gvvui5egjjm8" path="res://assets/Spear.png" id="2_m3mk2"]
 [ext_resource type="Texture2D" uid="uid://dbhq45n7ugxp6" path="res://assets/Charge_1.png" id="2_net6l"]
 [ext_resource type="PackedScene" uid="uid://c4i4kclxk6sa2" path="res://Scenes/charger_attack.tscn" id="4_775b5"]
@@ -151,6 +151,7 @@ _data = {
 }
 
 [node name="Charger" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_34ipw")
@@ -212,8 +213,10 @@ libraries = {
 [node name="ChargerAttack" parent="." instance=ExtResource("4_775b5")]
 
 [node name="attackCooldown" type="Timer" parent="."]
-wait_time = 0.501
+wait_time = 13.360999999999999
 one_shot = true
+
+[node name="windup" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="Sprite2D/spear/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="DetectionShape" to="." method="_on_detection_shape_body_entered"]
