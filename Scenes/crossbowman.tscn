@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr35807hhgwhu"]
+[gd_scene load_steps=6 format=3 uid="uid://dr35807hhgwhu"]
 
 [ext_resource type="Script" uid="uid://bxd0kkcw4um5a" path="res://Scenes/crossbowman.gd" id="1_6av6v"]
 [ext_resource type="Texture2D" uid="uid://dbhq45n7ugxp6" path="res://assets/Charge_1.png" id="1_408pl"]
 [ext_resource type="PackedScene" uid="uid://ba4jbo5qgkia4" path="res://arrow.tscn" id="2_b2gjw"]
+[ext_resource type="Script" uid="uid://wefr8yax3kor" path="res://Scenes/ai.gd" id="4_y3ewv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6av6v"]
 size = Vector2(61, 129)
@@ -32,3 +33,12 @@ position = Vector2(17.1, 50)
 [node name="Attackcooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("4_y3ewv")
+
+[node name="PlayerDetectionZone" type="Area2D" parent="AI"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AI/PlayerDetectionZone"]
+scale = Vector2(18.697794, 12.56561)
+polygon = PackedVector2Array(0.64048195, 0.06623843, 12.7154455, -12.6058445, 14.231518, -8.469552, 15.371572, -4.5042124, 15.745186, 1.5275365e-08, 15.318198, 4.3717356, 14.035895, 8.732174, 12.764351, 12.6715)

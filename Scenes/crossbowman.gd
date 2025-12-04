@@ -9,6 +9,7 @@ var health: float = 3.0
 @onready var bow_pos = $BowPos
 @onready var bow_dir = $BowDir
 @onready var attack_cooldown = $Attackcooldown
+@onready var ai = $AI
 
 signal enemy_shot_arrow(arrow, postion, direction)
 

@@ -57,8 +57,8 @@ func _physics_process(delta: float) -> void:
 			
 
 func spawn_thrust():
-	chargerAttack.global_position = spear.global_position
-	chargerAttack.global_rotation = spear.global_rotation
+	#chargerAttack.global_position = spear.global_position
+	#chargerAttack.global_rotation = spear.global_rotation
 	
 	chargerAttack.show()
 	spear_hitbox.disabled = false

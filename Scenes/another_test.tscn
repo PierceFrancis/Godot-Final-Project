@@ -94,12 +94,11 @@ shape = SubResource("RectangleShape2D_sbxmf")
 position = Vector2(-276, -216)
 player = NodePath("../Player")
 
-[node name="Crossbowman" parent="." node_paths=PackedStringArray("main") instance=ExtResource("6_7tkmi")]
-position = Vector2(-255.99998, -40.000015)
-scale = Vector2(0.31619826, 0.31619826)
-main = NodePath("..")
-
 [node name="ArrowManager" type="Node2D" parent="."]
 position = Vector2(-255.99998, -40.000015)
 scale = Vector2(0.31619826, 0.31619826)
 script = ExtResource("7_mpmpg")
+
+[node name="Crossbowman" parent="." instance=ExtResource("6_7tkmi")]
+position = Vector2(-296, 32)
+scale = Vector2(0.4470195, 0.4470195)
