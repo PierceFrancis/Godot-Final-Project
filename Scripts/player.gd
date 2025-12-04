@@ -15,6 +15,11 @@ var dash_dir: Vector2 = Vector2.ZERO
 const DASH_RELOAD_COST: float = 1.5
 var dash_reload_timer: float = 0.0
 
+# Pull and push variables
+var can_pull: bool = true
+var can_push: bool = true
+const PULL_SPEED: float = 10.0
+
 # Sword variables
 var can_slash: bool = true
 
@@ -86,6 +91,9 @@ func _physics_process(delta: float) -> void:
 	
 	if GameManager.weapon and Input.is_action_pressed("throw_weapon"):
 		throw_sword()
+		
+	if can_pull and Input.is_action_pressed("pull"):
+		pull_action()
 
 func spawn_slash():
 
@@ -157,3 +165,7 @@ func throw_sword() -> void:
 
 	# Reduce the correct pickup counter
 	GameManager.weapon = false
+	
+func pull_action() -> void:
+	var move_to = get_global_mouse_position()
+	velocity = move_to * PULL_SPEED
