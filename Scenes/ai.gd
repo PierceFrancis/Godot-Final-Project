@@ -11,9 +11,10 @@ enum State {
 }
 
 
-var current_state := State.IDLE:
+var current_state : int = State.IDLE:
 	set(new_state):
 		set_state(new_state)
+var player = null
 
 func set_state(new_state: int):
 	if new_state == current_state:

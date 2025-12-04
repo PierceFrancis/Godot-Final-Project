@@ -11,6 +11,7 @@ var health: float = 3.0
 @onready var chargerAttack = $ChargerAttack
 @onready var spear_hitbox = $ChargerAttack/Area2D/CollisionShape2D
 
+
 # Spear timing/damage
 @export var thrust_time: float = 0.2
 @export var spear_return_time: float = 0.5

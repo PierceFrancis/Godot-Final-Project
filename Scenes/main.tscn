@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vwdj0yaf5ar2"]
+[gd_scene load_steps=9 format=3 uid="uid://vwdj0yaf5ar2"]
 
 [ext_resource type="PackedScene" uid="uid://ecawa3jdj2h2" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://6gf0flf0t48u" path="res://Scenes/static_body_2d.tscn" id="2_bo1nx"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dnsvnutvsftmr" path="res://Scenes/weapon_pickup.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b4vjb0pt4vr3g" path="res://Scenes/ui.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b7e5c5e5t4hsc" path="res://Scenes/enemy_dummy.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cclmvq6r67lxa" path="res://Scenes/charger.tscn" id="7_6bp64"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6bp64"]
+vertices = PackedVector2Array(-506.5, 591.9531, -91.5, 795.0625, -1484.7969, 803.9297, -577.5, 591.9531, -10.53125, -789.8906, -506.5, 58.046875, -1068.2969, -87.953125, -1074.7266, -581.5, -577.5, -581.5, -577.5, -169.04688, -1067.5, -87.953125, -577.5, 58.046875, -577.5, 427.5, -1067.5, 427.5, -506.5, -169.04688, -506.5, -702.9531, -1455.1797, -775.09375, -577.5, -702.9531, -577.5, -652.5, -1093.9531, -652.5, -1139.0234, -65.59375, -1138.5, -65.59375, -1138.5, 445.95313, -1086.9531, 445.95313, -1086.9531, 498.5, -577.5, 498.5, -1145.9766, -599.46094, -1093.9531, -600.1406)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 10), PackedInt32Array(5, 11, 10, 9, 14), PackedInt32Array(4, 5, 14), PackedInt32Array(4, 14, 15), PackedInt32Array(16, 4, 15, 17), PackedInt32Array(17, 18, 19, 16), PackedInt32Array(20, 21, 22), PackedInt32Array(22, 23, 24, 2), PackedInt32Array(24, 25, 3, 2), PackedInt32Array(20, 22, 2, 16, 26), PackedInt32Array(26, 16, 19, 27)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1465, -785, 0, -800, -82, 805, -1495, 814)])
 
 [node name="Main" type="Node2D"]
 
@@ -16,35 +22,6 @@ offset_right = 1606.0
 offset_bottom = 984.0
 color = Color(0.14139813, 0.31891572, 0.26833078, 1)
 metadata/_edit_lock_ = true
-
-[node name="StaticBody2D" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-820, 463)
-rotation = 3.1415927
-scale = Vector2(0.3, 0.3)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-1107, -333.00003)
-rotation = -1.583841
-scale = Vector2(0.3, 0.3)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-542, -436)
-rotation = 1.5707964
-scale = Vector2(0.3, 0.3)
-
-[node name="StaticBody2D6" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-542, 325)
-rotation = 1.5707964
-scale = Vector2(0.3, 0.3)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-827, -617)
-scale = Vector2(0.3, 0.3)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-1103, 179)
-rotation = -1.5707964
-scale = Vector2(0.3, 0.3)
 
 [node name="item_pickup2" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(-180, -32)
@@ -58,3 +35,50 @@ position = Vector2(-844, 269)
 
 [node name="weapon_pickup" parent="." instance=ExtResource("4_jjvhh")]
 position = Vector2(-406, -19)
+
+[node name="Charger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_6bp64")]
+position = Vector2(-1013, -497)
+rotation = 0.8357109
+player = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6bp64")
+
+[node name="StaticBody2D" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-820, 463)
+rotation = -3.1415925
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D2" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-1107, -333.00003)
+rotation = -1.583841
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D5" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-542, -436)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D6" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-542, 325)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D3" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-827, -617)
+scale = Vector2(0.3, 0.3)
+
+[node name="StaticBody2D4" parent="NavigationRegion2D" instance=ExtResource("2_bo1nx")]
+position = Vector2(-1103, 179)
+rotation = -1.5707964
+scale = Vector2(0.3, 0.3)
+
+[node name="Charger2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_6bp64")]
+position = Vector2(-715, 668)
+rotation = 2.7445679
+player = NodePath("../Player")
+
+[node name="Charger3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_6bp64")]
+position = Vector2(-1000.0001, 245.99997)
+rotation = -0.7953116
+player = NodePath("../Player")

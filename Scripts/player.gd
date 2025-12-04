@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 # Movement variables
 const MAX_SPEED: float = 300
 const ACCELERATION: float = 18.5
