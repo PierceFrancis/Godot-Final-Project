@@ -71,11 +71,6 @@ position = Vector2(-1103, 179)
 rotation = -1.5707964
 scale = Vector2(0.3, 0.3)
 
-[node name="Charger2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bdlbp")]
-position = Vector2(693, -490)
-rotation = 2.7445679
-player = NodePath("../Player")
-
 [node name="Charger3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bdlbp")]
 position = Vector2(-1000.0001, 245.99997)
 rotation = -0.7953116

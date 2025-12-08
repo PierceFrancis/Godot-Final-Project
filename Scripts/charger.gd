@@ -104,6 +104,7 @@ func take_damage(weapon_damage: float):
 	
 	if health <= 0.0:
 		queue_free()
+		call_deferred("_check_for_win")
 func handle_hit():
 	health -= 1.0
 	print("crossbowmen hit")
@@ -111,6 +112,11 @@ func handle_hit():
 
 	#move_and_slide()
 #create a function for hostile state
+
+func _check_for_win():
+	if get_tree().get_nodes_in_group("enemy").is_empty():
+		GameManager.player_won()
+
 func charge():
 	#var direction = (player.position - position).normalized()
 	#velocity = direction * SPEED

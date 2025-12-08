@@ -23,4 +23,7 @@ func pickedUp(pickup: int) -> void:
 func weaponUp(pickup: bool) -> void:
 	weapon = true
 	
+func player_won():
+	print("Level complete")
+	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 	

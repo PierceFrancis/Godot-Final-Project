@@ -19,6 +19,8 @@ func _on_back_pressed() -> void:
 	print("back works")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/levels_screen.tscn")
+	GameManager.weapon = false
+	GameManager.lives = 3
 
 func _on_quit_pressed() -> void:
 	print("quit works")
