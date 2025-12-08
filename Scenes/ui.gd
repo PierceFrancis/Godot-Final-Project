@@ -37,3 +37,8 @@ func _input(event):
 		texture_progress.value = 0.0
 		is_on_cooldown = true
 		texture_progress.modulate = cooldown_color  # dim bar to indicate cooldown
+		
+
+func _on_pause_pressed() -> void:
+	get_tree().paused = true
+	$Pause.visible = true

@@ -1,33 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4vjb0pt4vr3g"]
+[gd_scene load_steps=6 format=3 uid="uid://b4vjb0pt4vr3g"]
 
 [ext_resource type="Script" uid="uid://bi6vj87w6cyad" path="res://Scenes/ui.gd" id="1_jxero"]
 [ext_resource type="Texture2D" uid="uid://drpj0gose6hkf" path="res://assets/new_empty_bar.png" id="2_2246s"]
 [ext_resource type="Texture2D" uid="uid://bw87q1rkhb02j" path="res://assets/new_border_bar.png" id="3_q7pk6"]
 [ext_resource type="Texture2D" uid="uid://831pccykdp3g" path="res://assets/new_full_bar.png" id="4_m78vo"]
+[ext_resource type="PackedScene" uid="uid://dborllkoyfy0p" path="res://Scenes/pause.tscn" id="5_q7pk6"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_jxero")
 
 [node name="Label2" type="Label" parent="."]
+offset_top = -1.0
 offset_right = 163.0
-offset_bottom = 69.0
+offset_bottom = 68.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_font_sizes/font_size = 35
 text = "Health: 3 "
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 600.0
-offset_right = 695.0
+offset_left = 216.0
+offset_right = 311.0
 offset_bottom = 49.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_font_sizes/font_size = 35
 text = "Dash:"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 25)
-offset_left = 714.0
+offset_left = 327.0
 offset_top = 15.0
-offset_right = 1314.0
+offset_right = 927.0
 offset_bottom = 65.0
 scale = Vector2(0.5, 0.5)
 value = 100.0
@@ -36,3 +42,22 @@ texture_over = ExtResource("3_q7pk6")
 texture_progress = ExtResource("4_m78vo")
 tint_under = Color(0.19607843, 0.19607843, 0.19607843, 1)
 tint_over = Color(1, 1, 1, 0)
+
+[node name="pause" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 11.0
+offset_right = 17.0
+offset_bottom = 88.0
+grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Pause"
+
+[node name="Pause" parent="." instance=ExtResource("5_q7pk6")]
+visible = false
+
+[connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]

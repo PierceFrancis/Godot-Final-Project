@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://dborllkoyfy0p"]
+
+[ext_resource type="Script" uid="uid://d2f4uv2i67ptn" path="res://Scenes/pause.gd" id="1_o80xk"]
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o80xk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -48.0
+offset_right = 1264.0
+offset_bottom = 745.0
+color = Color(0.54509807, 0.54509807, 0.54509807, 0.50980395)
+
+[node name="Resume" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 362.0
+offset_right = 101.0
+offset_bottom = 439.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 451.0
+offset_right = 175.0
+offset_bottom = 528.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Back to Levels"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 551.0
+offset_right = 57.0
+offset_bottom = 628.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
