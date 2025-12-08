@@ -77,7 +77,7 @@ _data = {
 }
 
 [node name="thrown_sword" type="Node2D"]
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.15, 0.15)
 script = ExtResource("1_0ftuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

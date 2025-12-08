@@ -19,8 +19,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Debug UI text
-	label.text = "Weapon: " + str(GameManager.weapon)
-	label2.text = "Items: " + str(GameManager.player_pickups)
+	label2.text = "Health: " + str(GameManager.lives)
 
 	# Handle recharge
 	if is_on_cooldown:

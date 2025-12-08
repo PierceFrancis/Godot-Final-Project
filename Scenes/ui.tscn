@@ -8,22 +8,13 @@
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_jxero")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 300.0
-offset_right = 525.0
-offset_bottom = 69.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 35
-text = "Weapon: "
-
 [node name="Label2" type="Label" parent="."]
 offset_right = 163.0
 offset_bottom = 69.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 35
-text = "Items: "
+text = "Health: 3 "
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 600.0

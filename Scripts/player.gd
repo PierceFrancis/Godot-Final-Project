@@ -158,7 +158,7 @@ func throw_sword() -> void:
 	throwable.global_position = global_position + spawn_offset
 
 	# add random spread (example ±15°)
-	var spread := deg_to_rad(randf_range(-15, 15))
+	var spread := deg_to_rad(randf_range(-0, 0))
 	throwable.direction = Vector2.RIGHT.rotated(rotation + spread)
 	throwable.rotation = rotation + spread
 

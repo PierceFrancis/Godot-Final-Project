@@ -30,5 +30,6 @@ func _process(_delta: float) -> void:
 	if player_inside:
 		if player_inside.is_in_group("Player") and Input.is_action_just_pressed("action_button"):
 			picked_up.emit(1)
+			GameManager.lives += 1
 			queue_free()
 	
